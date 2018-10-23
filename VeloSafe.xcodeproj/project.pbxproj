@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7109B230F8A53D29CC78614A /* Pods_VeloSafe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 451F391203576DECA2605F0C /* Pods_VeloSafe.framework */; };
 		9F1D271B217EF24200DA400C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1D271A217EF24200DA400C /* AppDelegate.swift */; };
 		9F1D271D217EF24200DA400C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1D271C217EF24200DA400C /* ViewController.swift */; };
 		9F1D2720217EF24200DA400C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F1D271E217EF24200DA400C /* Main.storyboard */; };
@@ -15,6 +16,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		451F391203576DECA2605F0C /* Pods_VeloSafe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VeloSafe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A988508C292AC097046701B /* Pods-VeloSafe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VeloSafe.release.xcconfig"; path = "Pods/Target Support Files/Pods-VeloSafe/Pods-VeloSafe.release.xcconfig"; sourceTree = "<group>"; };
 		9F1D2717217EF24200DA400C /* VeloSafe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VeloSafe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F1D271A217EF24200DA400C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F1D271C217EF24200DA400C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +25,7 @@
 		9F1D2721217EF24D00DA400C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F1D2724217EF24D00DA400C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9F1D2726217EF24D00DA400C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9FFA560A5334A2A57E09DD78 /* Pods-VeloSafe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VeloSafe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VeloSafe/Pods-VeloSafe.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +33,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7109B230F8A53D29CC78614A /* Pods_VeloSafe.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4FA462D69BFB27D1199C15D2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9FFA560A5334A2A57E09DD78 /* Pods-VeloSafe.debug.xcconfig */,
+				4A988508C292AC097046701B /* Pods-VeloSafe.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		873B8B4C41C73070A3FDE7CD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				451F391203576DECA2605F0C /* Pods_VeloSafe.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9F1D270E217EF24200DA400C = {
 			isa = PBXGroup;
 			children = (
 				9F1D2719217EF24200DA400C /* VeloSafe */,
 				9F1D2718217EF24200DA400C /* Products */,
+				4FA462D69BFB27D1199C15D2 /* Pods */,
+				873B8B4C41C73070A3FDE7CD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,9 +95,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9F1D2729217EF24D00DA400C /* Build configuration list for PBXNativeTarget "VeloSafe" */;
 			buildPhases = (
+				92299EB2FF1B7DDBE50DA189 /* [CP] Check Pods Manifest.lock */,
 				9F1D2713217EF24200DA400C /* Sources */,
 				9F1D2714217EF24200DA400C /* Frameworks */,
 				9F1D2715217EF24200DA400C /* Resources */,
+				55E94F747122E0E5D5765136 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -129,6 +155,47 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		55E94F747122E0E5D5765136 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-VeloSafe/Pods-VeloSafe-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VeloSafe/Pods-VeloSafe-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		92299EB2FF1B7DDBE50DA189 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VeloSafe-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9F1D2713217EF24200DA400C /* Sources */ = {
@@ -280,6 +347,7 @@
 		};
 		9F1D272A217EF24D00DA400C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9FFA560A5334A2A57E09DD78 /* Pods-VeloSafe.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -298,6 +366,7 @@
 		};
 		9F1D272B217EF24D00DA400C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4A988508C292AC097046701B /* Pods-VeloSafe.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
