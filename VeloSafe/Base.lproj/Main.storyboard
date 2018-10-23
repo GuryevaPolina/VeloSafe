@@ -34,13 +34,13 @@
                     <connections>
                         <outlet property="firstPointTextField" destination="XeQ-Yx-gJe" id="IH3-ao-dgS"/>
                         <outlet property="mapView" destination="ejS-dy-nBm" id="ZAp-9l-pGP"/>
-                        <outlet property="seachView" destination="lwc-qO-Dun" id="V1d-O3-TF7"/>
+                        <outlet property="searchView" destination="lwc-qO-Dun" id="V1d-O3-TF7"/>
                         <outlet property="secondPointTextField" destination="dUg-jl-H61" id="v1a-W2-xEv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <view contentMode="scaleToFill" id="lwc-qO-Dun">
-                    <rect key="frame" x="0.0" y="0.0" width="370" height="109"/>
+                    <rect key="frame" x="0.0" y="0.0" width="370" height="108"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XeQ-Yx-gJe">
@@ -56,7 +56,7 @@
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f6n-Ty-Bf9">
-                            <rect key="frame" x="322" y="38.5" width="32" height="32"/>
+                            <rect key="frame" x="322" y="38" width="32" height="32"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="32" id="VK2-P9-2mX"/>
                                 <constraint firstAttribute="height" constant="32" id="xcv-Qf-VaT"/>
@@ -72,6 +72,7 @@
                         <constraint firstItem="dUg-jl-H61" firstAttribute="trailing" secondItem="XeQ-Yx-gJe" secondAttribute="trailing" id="0pX-da-hMw"/>
                         <constraint firstItem="dUg-jl-H61" firstAttribute="leading" secondItem="XeQ-Yx-gJe" secondAttribute="leading" id="GgR-90-sLW"/>
                         <constraint firstItem="XeQ-Yx-gJe" firstAttribute="leading" secondItem="7by-Qo-0pN" secondAttribute="leading" constant="24" id="Gut-0N-pYV"/>
+                        <constraint firstItem="7by-Qo-0pN" firstAttribute="bottom" secondItem="dUg-jl-H61" secondAttribute="bottom" constant="20" id="anb-9V-qsU"/>
                         <constraint firstItem="XeQ-Yx-gJe" firstAttribute="top" secondItem="7by-Qo-0pN" secondAttribute="top" constant="20" id="huA-uJ-mCy"/>
                         <constraint firstItem="f6n-Ty-Bf9" firstAttribute="centerY" secondItem="7by-Qo-0pN" secondAttribute="centerY" id="iT0-VF-cch"/>
                         <constraint firstItem="7by-Qo-0pN" firstAttribute="trailing" secondItem="f6n-Ty-Bf9" secondAttribute="trailing" constant="16" id="rZY-dU-WR5"/>
@@ -79,6 +80,12 @@
                         <constraint firstItem="7by-Qo-0pN" firstAttribute="trailing" secondItem="XeQ-Yx-gJe" secondAttribute="trailing" constant="64" id="x0d-G8-2Ms"/>
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="7by-Qo-0pN"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <integer key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </view>
             </objects>
             <point key="canvasLocation" x="133.59999999999999" y="133.5832083958021"/>
