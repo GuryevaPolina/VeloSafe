@@ -40,7 +40,7 @@ class ViewController: UIViewController {
         searchView.layer.shadowRadius = 3.0
         searchView.layer.masksToBounds = false
         
-        searchView.frame.size.height = 128
+        searchView.frame.size.height = 144
         searchView.frame = CGRect(x: 0, y: -searchView.frame.size.height, width: view.frame.size.width, height: searchView.frame.size.height)
         view.addSubview(searchView)
     }

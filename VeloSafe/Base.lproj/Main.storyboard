@@ -40,23 +40,28 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <view contentMode="scaleToFill" id="lwc-qO-Dun">
-                    <rect key="frame" x="0.0" y="0.0" width="370" height="108"/>
+                    <rect key="frame" x="0.0" y="0.0" width="370" height="128"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XeQ-Yx-gJe">
-                            <rect key="frame" x="24" y="20" width="282" height="30"/>
-                            <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </textField>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dUg-jl-H61">
-                            <rect key="frame" x="24" y="58" width="282" height="30"/>
-                            <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </textField>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="PGw-ni-1qi">
+                            <rect key="frame" x="24" y="30" width="282" height="68"/>
+                            <subviews>
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="XeQ-Yx-gJe">
+                                    <rect key="frame" x="0.0" y="0.0" width="282" height="30"/>
+                                    <nil key="textColor"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
+                                </textField>
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="dUg-jl-H61">
+                                    <rect key="frame" x="0.0" y="38" width="282" height="30"/>
+                                    <nil key="textColor"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="go"/>
+                                </textField>
+                            </subviews>
+                        </stackView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f6n-Ty-Bf9">
-                            <rect key="frame" x="322" y="38" width="32" height="32"/>
+                            <rect key="frame" x="322" y="48" width="32" height="32"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="32" id="VK2-P9-2mX"/>
                                 <constraint firstAttribute="height" constant="32" id="xcv-Qf-VaT"/>
@@ -66,18 +71,23 @@
                                 <action selector="changeTwoPoints:" destination="BYZ-38-t0r" eventType="touchUpInside" id="E2a-XI-Hxf"/>
                             </connections>
                         </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Введите начальную и конечную точку:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mYd-Av-70f">
+                            <rect key="frame" x="24" y="11.5" width="282" height="14.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.66267138719558716" green="0.66278749704360962" blue="0.66266411542892456" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" red="0.93974727029122673" green="0.93974727029122673" blue="0.93974727029122673" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstItem="dUg-jl-H61" firstAttribute="trailing" secondItem="XeQ-Yx-gJe" secondAttribute="trailing" id="0pX-da-hMw"/>
-                        <constraint firstItem="dUg-jl-H61" firstAttribute="leading" secondItem="XeQ-Yx-gJe" secondAttribute="leading" id="GgR-90-sLW"/>
-                        <constraint firstItem="XeQ-Yx-gJe" firstAttribute="leading" secondItem="7by-Qo-0pN" secondAttribute="leading" constant="24" id="Gut-0N-pYV"/>
-                        <constraint firstItem="7by-Qo-0pN" firstAttribute="bottom" secondItem="dUg-jl-H61" secondAttribute="bottom" constant="20" id="anb-9V-qsU"/>
-                        <constraint firstItem="XeQ-Yx-gJe" firstAttribute="top" secondItem="7by-Qo-0pN" secondAttribute="top" constant="20" id="huA-uJ-mCy"/>
-                        <constraint firstItem="f6n-Ty-Bf9" firstAttribute="centerY" secondItem="7by-Qo-0pN" secondAttribute="centerY" id="iT0-VF-cch"/>
+                        <constraint firstItem="PGw-ni-1qi" firstAttribute="top" secondItem="mYd-Av-70f" secondAttribute="bottom" constant="4" id="2uC-KF-fVz"/>
+                        <constraint firstItem="mYd-Av-70f" firstAttribute="leading" secondItem="PGw-ni-1qi" secondAttribute="leading" id="30H-Vv-Hnw"/>
+                        <constraint firstItem="PGw-ni-1qi" firstAttribute="centerY" secondItem="7by-Qo-0pN" secondAttribute="centerY" id="4jE-bh-vX9"/>
+                        <constraint firstItem="PGw-ni-1qi" firstAttribute="leading" secondItem="7by-Qo-0pN" secondAttribute="leading" constant="24" id="S5G-bE-zdf"/>
+                        <constraint firstItem="f6n-Ty-Bf9" firstAttribute="leading" secondItem="PGw-ni-1qi" secondAttribute="trailing" constant="16" id="ZF9-ft-M4F"/>
+                        <constraint firstItem="mYd-Av-70f" firstAttribute="trailing" secondItem="PGw-ni-1qi" secondAttribute="trailing" id="qDu-YH-h2q"/>
                         <constraint firstItem="7by-Qo-0pN" firstAttribute="trailing" secondItem="f6n-Ty-Bf9" secondAttribute="trailing" constant="16" id="rZY-dU-WR5"/>
-                        <constraint firstItem="dUg-jl-H61" firstAttribute="top" secondItem="XeQ-Yx-gJe" secondAttribute="bottom" constant="8" id="wZQ-Sl-QbK"/>
-                        <constraint firstItem="7by-Qo-0pN" firstAttribute="trailing" secondItem="XeQ-Yx-gJe" secondAttribute="trailing" constant="64" id="x0d-G8-2Ms"/>
+                        <constraint firstItem="f6n-Ty-Bf9" firstAttribute="centerY" secondItem="PGw-ni-1qi" secondAttribute="centerY" id="yTR-RT-U5B"/>
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="7by-Qo-0pN"/>
                     <userDefinedRuntimeAttributes>
