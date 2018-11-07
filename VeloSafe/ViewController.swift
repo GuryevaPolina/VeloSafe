@@ -13,9 +13,13 @@ import GooglePlaces
 
 class ViewController: UIViewController {
 
+    let apiKey = "AIzaSyAQvGWJxMwv71xV8WvbvSSZk25E_uoqPEY"
+    
     var searchViewIsOpen = false
     @IBOutlet var searchView: UIView!
     @IBOutlet weak var mapView: GMSMapView!
+    
+    var graph: [Int: GeoPoint] = [:]
     
     @IBOutlet weak var firstPointTextField: UITextField!
     @IBOutlet weak var secondPointTextField: UITextField!
@@ -29,6 +33,57 @@ class ViewController: UIViewController {
         initView()
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
+        drawBasicGraph()
+    }
+    
+    func drawPath(from gp1: GeoPoint, to gp2: GeoPoint) {
+        let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(gp1.latitude),\(gp1.longitude)&destination=\(gp2.latitude),\(gp2.longitude)&sensor=false&key=\(apiKey)"
+        let urlRequest = URLRequest(url: URL(string: url)!)
+        let session = URLSession(configuration: URLSessionConfiguration.default)
+        
+        let task = session.dataTask(with: urlRequest) { (data, response, error) in
+            do {
+                guard let json = try JSONSerialization.jsonObject(with: data!, options:[]) as? [String: Any] else {
+                    print("[drawPath] json error")
+                    return
+                }
+                print(json)
+                guard let routes = json["routes"] as? [[String: Any]] else {
+                    print("[drawPath] routes error")
+                    return
+                }
+                for route in routes {
+                    guard let overviewPolyline = route["overview_polyline"] as? [String: Any] else {
+                        print("[drawPath] overview error")
+                        return
+                    }
+                    guard let points = overviewPolyline["points"] as? String else {
+                        print("[drawPath] points error")
+                        return
+                    }
+                    let path = GMSPath(fromEncodedPath: points)
+                    let polyline = GMSPolyline(path: path)
+                    polyline.strokeWidth = 4.0
+                    polyline.strokeColor = .red
+                    polyline.map = self.mapView
+                }
+            }
+            catch {
+                print("json error")
+            }
+        }
+        task.resume()
+    }
+    
+    func drawBasicGraph() {
+        drawPath(from: graph[0]!, to: graph[1]!)
+        drawPath(from: graph[1]!, to: graph[4]!)
+      //  drawPath(from: graph[0]!, to: graph[3]!)
+      //  drawPath(from: graph[3]!, to: graph[1]!)
+      //  drawPath(from: graph[1]!, to: graph[4]!)
+     //   drawPath(from: graph[4]!, to: graph[5]!)
+      //  drawPath(from: graph[5]!, to: graph[6]!)
+     //   drawPath(from: graph[6]!, to: graph[1]!)
     }
     
     func initView() {
@@ -43,6 +98,17 @@ class ViewController: UIViewController {
         searchView.frame.size.height = 144
         searchView.frame = CGRect(x: 0, y: -searchView.frame.size.height, width: view.frame.size.width, height: searchView.frame.size.height)
         view.addSubview(searchView)
+        
+        guard let path = Bundle.main.path(forResource: "graph.txt", ofType: nil) else {
+            print("[initView] path is not found")
+            return
+        }
+        
+        let (res, error) = GraphParser.parseGraphFromFile(withPath: path)
+        if error == nil {
+            graph = res
+        }
+        
     }
 
     @IBAction func changeTwoPoints(_ sender: Any) {

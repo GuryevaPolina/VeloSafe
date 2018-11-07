@@ -13,6 +13,10 @@
 		9F1D2720217EF24200DA400C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F1D271E217EF24200DA400C /* Main.storyboard */; };
 		9F1D2722217EF24D00DA400C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F1D2721217EF24D00DA400C /* Assets.xcassets */; };
 		9F1D2725217EF24D00DA400C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F1D2723217EF24D00DA400C /* LaunchScreen.storyboard */; };
+		9F73B49A2192B8A000174630 /* GeoPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F73B4992192B8A000174630 /* GeoPoint.swift */; };
+		9F73B49C2192B9A500174630 /* GraphParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F73B49B2192B9A500174630 /* GraphParser.swift */; };
+		9F73B49E2192BD1D00174630 /* graph.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9F73B49D2192BD1D00174630 /* graph.txt */; };
+		9F73B4A12192C4D400174630 /* ErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F73B4A02192C4D400174630 /* ErrorType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +29,10 @@
 		9F1D2721217EF24D00DA400C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F1D2724217EF24D00DA400C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9F1D2726217EF24D00DA400C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9F73B4992192B8A000174630 /* GeoPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoPoint.swift; sourceTree = "<group>"; };
+		9F73B49B2192B9A500174630 /* GraphParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphParser.swift; sourceTree = "<group>"; };
+		9F73B49D2192BD1D00174630 /* graph.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = graph.txt; path = VeloSafe/Resources/graph.txt; sourceTree = SOURCE_ROOT; };
+		9F73B4A02192C4D400174630 /* ErrorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorType.swift; sourceTree = "<group>"; };
 		9FFA560A5334A2A57E09DD78 /* Pods-VeloSafe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VeloSafe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VeloSafe/Pods-VeloSafe.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,6 +86,8 @@
 		9F1D2719217EF24200DA400C /* VeloSafe */ = {
 			isa = PBXGroup;
 			children = (
+				9F73B49F2192BD2400174630 /* Resources */,
+				9F73B4982192B88400174630 /* Model */,
 				9F1D271A217EF24200DA400C /* AppDelegate.swift */,
 				9F1D271C217EF24200DA400C /* ViewController.swift */,
 				9F1D271E217EF24200DA400C /* Main.storyboard */,
@@ -86,6 +96,24 @@
 				9F1D2726217EF24D00DA400C /* Info.plist */,
 			);
 			path = VeloSafe;
+			sourceTree = "<group>";
+		};
+		9F73B4982192B88400174630 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9F73B4992192B8A000174630 /* GeoPoint.swift */,
+				9F73B49B2192B9A500174630 /* GraphParser.swift */,
+				9F73B4A02192C4D400174630 /* ErrorType.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9F73B49F2192BD2400174630 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9F73B49D2192BD1D00174630 /* graph.txt */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,6 +177,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F1D2725217EF24D00DA400C /* LaunchScreen.storyboard in Resources */,
+				9F73B49E2192BD1D00174630 /* graph.txt in Resources */,
 				9F1D2722217EF24D00DA400C /* Assets.xcassets in Resources */,
 				9F1D2720217EF24200DA400C /* Main.storyboard in Resources */,
 			);
@@ -202,8 +231,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F73B49A2192B8A000174630 /* GeoPoint.swift in Sources */,
+				9F73B4A12192C4D400174630 /* ErrorType.swift in Sources */,
 				9F1D271D217EF24200DA400C /* ViewController.swift in Sources */,
 				9F1D271B217EF24200DA400C /* AppDelegate.swift in Sources */,
+				9F73B49C2192B9A500174630 /* GraphParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
