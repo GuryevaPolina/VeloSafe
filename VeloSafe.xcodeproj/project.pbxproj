@@ -7,33 +7,43 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		521C13BF223ACD09007C9879 /* streets.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 521C13BE223ACD09007C9879 /* streets.geojson */; };
+		522F1114224C7F0900A04E12 /* StreetGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F1113224C7F0900A04E12 /* StreetGraph.swift */; };
+		522F1116224C7F9C00A04E12 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F1115224C7F9C00A04E12 /* Edge.swift */; };
+		522F1118224C821400A04E12 /* OSM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F1117224C821400A04E12 /* OSM.swift */; };
+		522F111A224C82D400A04E12 /* OSMWay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F1119224C82D400A04E12 /* OSMWay.swift */; };
+		522F111C224C83CF00A04E12 /* OSMNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F111B224C83CF00A04E12 /* OSMNode.swift */; };
+		522F111E224C840000A04E12 /* OSMBounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F111D224C840000A04E12 /* OSMBounds.swift */; };
+		522F1120224C847E00A04E12 /* Way.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F111F224C847E00A04E12 /* Way.swift */; };
 		7109B230F8A53D29CC78614A /* Pods_VeloSafe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 451F391203576DECA2605F0C /* Pods_VeloSafe.framework */; };
 		9F1D271B217EF24200DA400C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1D271A217EF24200DA400C /* AppDelegate.swift */; };
-		9F1D271D217EF24200DA400C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1D271C217EF24200DA400C /* ViewController.swift */; };
-		9F1D2720217EF24200DA400C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F1D271E217EF24200DA400C /* Main.storyboard */; };
+		9F1D271D217EF24200DA400C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1D271C217EF24200DA400C /* MapViewController.swift */; };
+		9F1D2720217EF24200DA400C /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F1D271E217EF24200DA400C /* Map.storyboard */; };
 		9F1D2722217EF24D00DA400C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F1D2721217EF24D00DA400C /* Assets.xcassets */; };
 		9F1D2725217EF24D00DA400C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F1D2723217EF24D00DA400C /* LaunchScreen.storyboard */; };
 		9F73B49A2192B8A000174630 /* GeoPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F73B4992192B8A000174630 /* GeoPoint.swift */; };
-		9F73B49C2192B9A500174630 /* GraphParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F73B49B2192B9A500174630 /* GraphParser.swift */; };
-		9F73B49E2192BD1D00174630 /* graph.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9F73B49D2192BD1D00174630 /* graph.txt */; };
-		9F73B4A12192C4D400174630 /* ErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F73B4A02192C4D400174630 /* ErrorType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		451F391203576DECA2605F0C /* Pods_VeloSafe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VeloSafe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4A988508C292AC097046701B /* Pods-VeloSafe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VeloSafe.release.xcconfig"; path = "Pods/Target Support Files/Pods-VeloSafe/Pods-VeloSafe.release.xcconfig"; sourceTree = "<group>"; };
+		521C13BE223ACD09007C9879 /* streets.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = streets.geojson; sourceTree = "<group>"; };
+		522F1113224C7F0900A04E12 /* StreetGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreetGraph.swift; sourceTree = "<group>"; };
+		522F1115224C7F9C00A04E12 /* Edge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Edge.swift; sourceTree = "<group>"; };
+		522F1117224C821400A04E12 /* OSM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSM.swift; sourceTree = "<group>"; };
+		522F1119224C82D400A04E12 /* OSMWay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSMWay.swift; sourceTree = "<group>"; };
+		522F111B224C83CF00A04E12 /* OSMNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSMNode.swift; sourceTree = "<group>"; };
+		522F111D224C840000A04E12 /* OSMBounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSMBounds.swift; sourceTree = "<group>"; };
+		522F111F224C847E00A04E12 /* Way.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Way.swift; sourceTree = "<group>"; };
+		7DA581D965643C83417ABF78 /* Pods-VeloSafe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VeloSafe.release.xcconfig"; path = "Pods/Target Support Files/Pods-VeloSafe/Pods-VeloSafe.release.xcconfig"; sourceTree = "<group>"; };
+		9AE001C59707A6BE96AB704A /* Pods-VeloSafe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VeloSafe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VeloSafe/Pods-VeloSafe.debug.xcconfig"; sourceTree = "<group>"; };
 		9F1D2717217EF24200DA400C /* VeloSafe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VeloSafe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F1D271A217EF24200DA400C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9F1D271C217EF24200DA400C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		9F1D271F217EF24200DA400C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9F1D271C217EF24200DA400C /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		9F1D271F217EF24200DA400C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Map.storyboard; sourceTree = "<group>"; };
 		9F1D2721217EF24D00DA400C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F1D2724217EF24D00DA400C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9F1D2726217EF24D00DA400C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F73B4992192B8A000174630 /* GeoPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoPoint.swift; sourceTree = "<group>"; };
-		9F73B49B2192B9A500174630 /* GraphParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphParser.swift; sourceTree = "<group>"; };
-		9F73B49D2192BD1D00174630 /* graph.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = graph.txt; path = VeloSafe/Resources/graph.txt; sourceTree = SOURCE_ROOT; };
-		9F73B4A02192C4D400174630 /* ErrorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorType.swift; sourceTree = "<group>"; };
-		9FFA560A5334A2A57E09DD78 /* Pods-VeloSafe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VeloSafe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VeloSafe/Pods-VeloSafe.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,10 +61,28 @@
 		4FA462D69BFB27D1199C15D2 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				9FFA560A5334A2A57E09DD78 /* Pods-VeloSafe.debug.xcconfig */,
-				4A988508C292AC097046701B /* Pods-VeloSafe.release.xcconfig */,
+				9AE001C59707A6BE96AB704A /* Pods-VeloSafe.debug.xcconfig */,
+				7DA581D965643C83417ABF78 /* Pods-VeloSafe.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		520A8B4E223ACB4C00108614 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9F1D2721217EF24D00DA400C /* Assets.xcassets */,
+				521C13BE223ACD09007C9879 /* streets.geojson */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		522F1121224DF23700A04E12 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				9F1D271E217EF24200DA400C /* Map.storyboard */,
+				9F1D271C217EF24200DA400C /* MapViewController.swift */,
+			);
+			path = Map;
 			sourceTree = "<group>";
 		};
 		873B8B4C41C73070A3FDE7CD /* Frameworks */ = {
@@ -86,12 +114,10 @@
 		9F1D2719217EF24200DA400C /* VeloSafe */ = {
 			isa = PBXGroup;
 			children = (
-				9F73B49F2192BD2400174630 /* Resources */,
+				522F1121224DF23700A04E12 /* Map */,
+				520A8B4E223ACB4C00108614 /* Resources */,
 				9F73B4982192B88400174630 /* Model */,
 				9F1D271A217EF24200DA400C /* AppDelegate.swift */,
-				9F1D271C217EF24200DA400C /* ViewController.swift */,
-				9F1D271E217EF24200DA400C /* Main.storyboard */,
-				9F1D2721217EF24D00DA400C /* Assets.xcassets */,
 				9F1D2723217EF24D00DA400C /* LaunchScreen.storyboard */,
 				9F1D2726217EF24D00DA400C /* Info.plist */,
 			);
@@ -102,18 +128,15 @@
 			isa = PBXGroup;
 			children = (
 				9F73B4992192B8A000174630 /* GeoPoint.swift */,
-				9F73B49B2192B9A500174630 /* GraphParser.swift */,
-				9F73B4A02192C4D400174630 /* ErrorType.swift */,
+				522F1113224C7F0900A04E12 /* StreetGraph.swift */,
+				522F1115224C7F9C00A04E12 /* Edge.swift */,
+				522F1117224C821400A04E12 /* OSM.swift */,
+				522F1119224C82D400A04E12 /* OSMWay.swift */,
+				522F111B224C83CF00A04E12 /* OSMNode.swift */,
+				522F111D224C840000A04E12 /* OSMBounds.swift */,
+				522F111F224C847E00A04E12 /* Way.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		9F73B49F2192BD2400174630 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				9F73B49D2192BD1D00174630 /* graph.txt */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,6 +151,7 @@
 				9F1D2714217EF24200DA400C /* Frameworks */,
 				9F1D2715217EF24200DA400C /* Resources */,
 				55E94F747122E0E5D5765136 /* [CP] Copy Pods Resources */,
+				3E7C3620EBC6BE61795253FF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -177,22 +201,46 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F1D2725217EF24D00DA400C /* LaunchScreen.storyboard in Resources */,
-				9F73B49E2192BD1D00174630 /* graph.txt in Resources */,
+				521C13BF223ACD09007C9879 /* streets.geojson in Resources */,
 				9F1D2722217EF24D00DA400C /* Assets.xcassets in Resources */,
-				9F1D2720217EF24200DA400C /* Main.storyboard in Resources */,
+				9F1D2720217EF24200DA400C /* Map.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		3E7C3620EBC6BE61795253FF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VeloSafe/Pods-VeloSafe-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/CSV.swift/CSV.framework",
+				"${BUILT_PRODUCTS_DIR}/SWXMLHash/SWXMLHash.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CSV.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SWXMLHash.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VeloSafe/Pods-VeloSafe-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		55E94F747122E0E5D5765136 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-VeloSafe/Pods-VeloSafe-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-VeloSafe/Pods-VeloSafe-resources.sh",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
 				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
 			);
@@ -203,7 +251,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VeloSafe/Pods-VeloSafe-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VeloSafe/Pods-VeloSafe-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		92299EB2FF1B7DDBE50DA189 /* [CP] Check Pods Manifest.lock */ = {
@@ -232,22 +280,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F73B49A2192B8A000174630 /* GeoPoint.swift in Sources */,
-				9F73B4A12192C4D400174630 /* ErrorType.swift in Sources */,
-				9F1D271D217EF24200DA400C /* ViewController.swift in Sources */,
+				522F111C224C83CF00A04E12 /* OSMNode.swift in Sources */,
+				522F1114224C7F0900A04E12 /* StreetGraph.swift in Sources */,
+				522F1116224C7F9C00A04E12 /* Edge.swift in Sources */,
+				522F111E224C840000A04E12 /* OSMBounds.swift in Sources */,
+				522F1118224C821400A04E12 /* OSM.swift in Sources */,
+				9F1D271D217EF24200DA400C /* MapViewController.swift in Sources */,
 				9F1D271B217EF24200DA400C /* AppDelegate.swift in Sources */,
-				9F73B49C2192B9A500174630 /* GraphParser.swift in Sources */,
+				522F1120224C847E00A04E12 /* Way.swift in Sources */,
+				522F111A224C82D400A04E12 /* OSMWay.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		9F1D271E217EF24200DA400C /* Main.storyboard */ = {
+		9F1D271E217EF24200DA400C /* Map.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				9F1D271F217EF24200DA400C /* Base */,
 			);
-			name = Main.storyboard;
+			name = Map.storyboard;
 			sourceTree = "<group>";
 		};
 		9F1D2723217EF24D00DA400C /* LaunchScreen.storyboard */ = {
@@ -379,7 +432,7 @@
 		};
 		9F1D272A217EF24D00DA400C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9FFA560A5334A2A57E09DD78 /* Pods-VeloSafe.debug.xcconfig */;
+			baseConfigurationReference = 9AE001C59707A6BE96AB704A /* Pods-VeloSafe.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -398,7 +451,7 @@
 		};
 		9F1D272B217EF24D00DA400C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4A988508C292AC097046701B /* Pods-VeloSafe.release.xcconfig */;
+			baseConfigurationReference = 7DA581D965643C83417ABF78 /* Pods-VeloSafe.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -425,7 +478,7 @@
 				9F1D2728217EF24D00DA400C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		9F1D2729217EF24D00DA400C /* Build configuration list for PBXNativeTarget "VeloSafe" */ = {
 			isa = XCConfigurationList;
@@ -434,7 +487,7 @@
 				9F1D272B217EF24D00DA400C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
