@@ -1,0 +1,33 @@
+PODS:
+  - CSV.swift (2.3.1)
+  - GoogleMaps (3.0.3):
+    - GoogleMaps/Maps (= 3.0.3)
+  - GoogleMaps/Base (3.0.3)
+  - GoogleMaps/Maps (3.0.3):
+    - GoogleMaps/Base
+  - GooglePlaces (3.0.3):
+    - GoogleMaps/Base (= 3.0.3)
+  - SWXMLHash (4.8.0)
+
+DEPENDENCIES:
+  - CSV.swift
+  - GoogleMaps
+  - GooglePlaces
+  - SWXMLHash
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - CSV.swift
+    - GoogleMaps
+    - GooglePlaces
+    - SWXMLHash
+
+SPEC CHECKSUMS:
+  CSV.swift: d16f671b3090a2c0525d5f2165b18319074aae2b
+  GoogleMaps: fd5c9fa58871781b9fb94d4936f19c69fe60ce32
+  GooglePlaces: f09e76993c9c3ee4af8f4f7f535bb94d6aa3b649
+  SWXMLHash: 6d0ab74fef35f99156945c8bfe86dd7ead0822aa
+
+PODFILE CHECKSUM: be6c83b21f9a4280bffccfa67236a489164cc688
+
+COCOAPODS: 1.6.1
