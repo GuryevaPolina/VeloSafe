@@ -18,6 +18,7 @@ public class OSM {
     var nodes = [String: OSMNode]()
     var ways = Set<OSMWay>()
     var bounds = OSMBounds()
+    var streetNames = [String]()
     
     public init(xml: XMLIndexer) throws {
         let xmlNodes = xml["osm"]["node"]
@@ -26,6 +27,7 @@ public class OSM {
             self.nodes[node.id] = node
         }
         
+        var streets = Set<String>()
         for xmlWay in xml["osm"]["way"].all {
             let way = try OSMWay(xml: xmlWay, osm: self)
             
@@ -35,6 +37,9 @@ public class OSM {
                     self.nodes[node.id]?.ways.insert(way)
                 }
                 self.ways.insert(way)
+            }
+            if let streetName = way.tags["name"] {
+                streets.insert(streetName)
             }
         }
         
@@ -51,8 +56,11 @@ public class OSM {
         let xmlBounds = xml["osm"]["bounds"]
         self.bounds = try OSMBounds(xml: xmlBounds)
         
+        self.streetNames = Array(streets).sorted()
+        
         DispatchQueue.main.async {
             print("osm init complete")
+              print("streets: \(self.streetNames)")
         }
     }
     
