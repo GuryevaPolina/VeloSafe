@@ -16,9 +16,4 @@ class Way {
     init() {
     }
     
-//    init(nodes: [OSMNode], distance: Double = -1.0) {
-//        self.nodes = nodes
-//        self.distance = distance
-//    }
-    
 }

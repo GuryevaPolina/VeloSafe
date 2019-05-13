@@ -37,14 +37,14 @@ class OSMWay: Way, Taggable {
             }
         }
         
-        for i in 0..<nodes.count {
-            if i != 0 {
-                nodes[i].adjacent.insert(nodes[i - 1])
-            }
-            if i != nodes.count - 1 {
-                nodes[i].adjacent.insert(nodes[i + 1])
-            }
-        }
+//        for i in 0..<nodes.count {
+//            if i != 0 {
+//                nodes[i].adjacent.insert(nodes[i - 1])
+//            }
+//            if i != nodes.count - 1 {
+//                nodes[i].adjacent.insert(nodes[i + 1])
+//            }
+//        }
         super.init()
         self.nodes = nodes
     }

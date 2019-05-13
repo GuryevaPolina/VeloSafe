@@ -73,12 +73,52 @@ class MapViewController: UIViewController {
                 print(self.graph.bounds)
                 self.isGraphCreated = true
                 self.drawGraph()
+              //  self.createAdjacencyMatrix()
             } else {
                 DispatchQueue.main.async {
                     print("fail")
                 }
             }
         }
+    }
+    
+    private func createAdjacencyMatrix() {
+        var matrix = [Segment : TurnDirection]()
+        
+        for node in self.graph.nodes.values/*.prefix(3)*/ {
+            for adjacentNode in node.adjacent {
+                for doubleAdjacentNode in adjacentNode.adjacent {
+                    
+                    let path = GMSMutablePath()
+                    path.add(CLLocationCoordinate2D(latitude: node.location.latitude,
+                                                    longitude: node.location.longitude))
+
+                    path.add(CLLocationCoordinate2D(latitude: doubleAdjacentNode.location.latitude,
+                                                    longitude: doubleAdjacentNode.location.longitude))
+                    let polyline = GMSPolyline(path: path)
+                    polyline.strokeColor = .blue
+                    polyline.strokeWidth = 2.0
+                    polyline.geodesic = true
+                    polyline.map = mapView
+                    
+                    let d = (doubleAdjacentNode.location.latitude - node.location.latitude) * (adjacentNode.location.longitude - node.location.longitude) - (doubleAdjacentNode.location.longitude - node.location.longitude) * (adjacentNode.location.latitude - node.location.latitude)
+                    let eps = 1e-10
+                    print(d)
+                    if (d < -eps) {
+                        matrix[Segment(firstPointId: node.id, secondPointId: doubleAdjacentNode.id)] = .left
+                    } else if (d > eps) {
+                        matrix[Segment(firstPointId: node.id, secondPointId: doubleAdjacentNode.id)] = .right
+                    } else {
+                        matrix[Segment(firstPointId: node.id, secondPointId: doubleAdjacentNode.id)] = .none
+                        
+                    }
+                    
+                }
+            }
+        }
+
+        print("creating matrix done")
+        
     }
     
     private func drawGraph() {
@@ -95,6 +135,21 @@ class MapViewController: UIViewController {
             polyline.geodesic = true
             polyline.map = mapView
         }
+        
+        for node in graph.nodes.values {
+            let path = GMSMutablePath()
+            path.add(CLLocationCoordinate2D(latitude: node.location.latitude,
+                                            longitude: node.location.longitude))
+            
+            path.add(CLLocationCoordinate2D(latitude: node.location.latitude + 0.0001,
+                                            longitude: node.location.longitude + 0.0001))
+            let polyline = GMSPolyline(path: path)
+            polyline.strokeColor = .cyan
+            polyline.strokeWidth = 2.0
+            polyline.geodesic = true
+            polyline.map = mapView
+        }
+        
         print("draw complete")
     }
     

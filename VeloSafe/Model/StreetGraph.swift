@@ -9,6 +9,12 @@
 import Foundation
 import SWXMLHash
 
+enum TurnDirection {
+    case left
+    case right
+    case none
+}
+
 class StreetGraph {
     
     var edgeList = [Edge]()
@@ -18,15 +24,12 @@ class StreetGraph {
     
     init(osm: OSM) {
         self.bounds = osm.bounds
-        
-        createEdgeList(map: osm)
-        
         self.nodes = osm.nodes
-        
+        createEdgeList(osm: osm)
     }
     
-    func createEdgeList(map: OSM) {
-        for way in map.ways {
+    func createEdgeList(osm: OSM) {
+        for way in osm.ways {
             for i in 0..<way.nodes.count - 1 {
                 let edge = Edge(from: way.nodes[i],
                                 to: way.nodes[i + 1])

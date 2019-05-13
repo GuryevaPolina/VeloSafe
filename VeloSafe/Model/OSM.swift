@@ -60,7 +60,7 @@ public class OSM {
         
         DispatchQueue.main.async {
             print("osm init complete")
-              print("streets: \(self.streetNames)")
+            //print("streets: \(self.streetNames)")
         }
     }
     
