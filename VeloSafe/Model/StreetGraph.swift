@@ -26,6 +26,14 @@ class StreetGraph {
         self.bounds = osm.bounds
         self.nodes = osm.nodes
         createEdgeList(osm: osm)
+        detectAdjacentNodes()
+    }
+    
+    private func detectAdjacentNodes() {
+        for edge in edgeList {
+            edge.from.adjacent.insert(edge.to)
+            edge.to.adjacent.insert(edge.from)
+        }
     }
     
     func createEdgeList(osm: OSM) {
