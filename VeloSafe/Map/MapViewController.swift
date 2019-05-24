@@ -116,6 +116,7 @@ class MapViewController: UIViewController {
             }
         }
         print("creating matrix done")
+        self.searchPath()
     }
     
     private func drawGraph() {
@@ -133,6 +134,50 @@ class MapViewController: UIViewController {
             polyline.map = mapView
         }
         print("draw complete")
+    }
+    
+//    private func searchPath(from: OSMNode, to: OSMNode) {
+    private func searchPath() {
+        var values = [OSMNode]()
+        for node in graph.nodes.values.prefix(2){
+            values.append(node)
+        }
+        let from = values[0]
+        let to = values[1]
+        drawPoint(from)
+        drawPoint(to)
+        let pathFinder = AStarPathfinder(graph)
+        let path = pathFinder.searchPath(from: from, to: to)
+        drawPath(path: path)
+    }
+    
+    private func drawPoint(_ point: OSMNode) {
+        let path = GMSMutablePath()
+        
+        path.add(CLLocationCoordinate2D(latitude: point.location.latitude,
+                                        longitude: point.location.longitude))
+        path.add(CLLocationCoordinate2D(latitude: point.location.latitude + 0.001,
+                                        longitude: point.location.longitude + 0.001))
+        
+        let polyline = GMSPolyline(path: path)
+        polyline.strokeColor = .green
+        polyline.strokeWidth = 2.0
+        polyline.geodesic = true
+        polyline.map = mapView
+    }
+    
+    private func drawPath(path pathForDraw: [OSMNode]) {
+        let path = GMSMutablePath()
+        
+        for node in pathForDraw {
+            path.add(CLLocationCoordinate2D(latitude: node.location.latitude,
+                                            longitude: node.location.longitude))
+        }
+        let polyline = GMSPolyline(path: path)
+        polyline.strokeColor = .blue
+        polyline.strokeWidth = 2.0
+        polyline.geodesic = true
+        polyline.map = mapView
     }
     
     @objc private func moveSearchView() {
