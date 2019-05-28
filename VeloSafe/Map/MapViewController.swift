@@ -61,18 +61,21 @@ class MapViewController: UIViewController {
         searchView.frame.size.height = 144
         searchView.frame = CGRect(x: 0, y: -searchView.frame.size.height, width: view.frame.size.width, height: searchView.frame.size.height)
         view.addSubview(searchView)
+        
+        firstPointTextField.addTarget(self, action: #selector(showStreetList(for:)), for: .editingDidBegin)
+        secondPointTextField.addTarget(self, action: #selector(showStreetList(for:)), for: .editingDidBegin)
     }
     
     private func initGraph() {
         let file =  NSDataAsset(name: "saintp")!
         let xml = SWXMLHash.parse(file.data)
-        DispatchQueue.global().async {
-            if let osm = try? OSM.init(xml: xml) {
+        DispatchQueue.main.async {
+            if let osm = try? OSM(xml: xml){
                 
                 self.graph = StreetGraph(osm: osm)
                 print(self.graph.bounds)
                 self.isGraphCreated = true
-                self.drawGraph()
+              //  self.drawGraph()
                 self.createAdjacencyMatrix()
             } else {
                 DispatchQueue.main.async {
@@ -82,24 +85,19 @@ class MapViewController: UIViewController {
         }
     }
     
+    @objc private func showStreetList(for textField: UITextField) {
+        let vc = UIStoryboard(name: "Streets", bundle: nil).instantiateViewController(withIdentifier: "streetsVC") as! StreetsViewController
+        vc.streets = graph.streets
+        vc.editedTextField = textField
+        present(vc, animated: false, completion: nil)
+    }
+    
     private func createAdjacencyMatrix() {
         var matrix = [Segment : TurnDirection]()
         
         for node in self.graph.nodes.values {
             for adjacentNode in node.adjacent {
                 for doubleAdjacentNode in adjacentNode.adjacent {
-                    
-//                    let path = GMSMutablePath()
-//                    path.add(CLLocationCoordinate2D(latitude: node.location.latitude,
-//                                                    longitude: node.location.longitude))
-//
-//                    path.add(CLLocationCoordinate2D(latitude: doubleAdjacentNode.location.latitude,
-//                                                    longitude: doubleAdjacentNode.location.longitude))
-//                    let polyline = GMSPolyline(path: path)
-//                    polyline.strokeColor = .blue
-//                    polyline.strokeWidth = 2.0
-//                    polyline.geodesic = true
-//                    polyline.map = mapView
                     
                     let d = (doubleAdjacentNode.location.latitude - node.location.latitude) * (adjacentNode.location.longitude - node.location.longitude) - (doubleAdjacentNode.location.longitude - node.location.longitude) * (adjacentNode.location.latitude - node.location.latitude)
                     let eps = 1e-10
@@ -119,6 +117,27 @@ class MapViewController: UIViewController {
         self.searchPath()
     }
     
+    
+    
+    @objc private func moveSearchView() {
+        UIView.animate(withDuration: 0.5) {
+            self.searchView.frame.origin.y = self.searchViewIsOpen ? -self.searchView.frame.size.height : -16
+        }
+        searchViewIsOpen = !searchViewIsOpen
+    }
+
+    //MARK: - Actions
+    @IBAction private func changeTwoPoints(_ sender: Any) {
+        guard let first = firstPointTextField.text,
+            let second = secondPointTextField.text else {return}
+        firstPointTextField.text = second
+        secondPointTextField.text = first
+    }
+    
+}
+
+// drawing
+extension MapViewController {
     private func drawGraph() {
         for edge in graph.edgeList {
             let path = GMSMutablePath()
@@ -136,7 +155,7 @@ class MapViewController: UIViewController {
         print("draw complete")
     }
     
-//    private func searchPath(from: OSMNode, to: OSMNode) {
+    //    private func searchPath(from: OSMNode, to: OSMNode) {
     private func searchPath() {
         var values = [OSMNode]()
         for node in graph.nodes.values.prefix(2){
@@ -179,27 +198,6 @@ class MapViewController: UIViewController {
         polyline.geodesic = true
         polyline.map = mapView
     }
-    
-    @objc private func moveSearchView() {
-        UIView.animate(withDuration: 0.5) {
-            if self.searchViewIsOpen {
-                self.searchView.frame.origin.y = -self.searchView.frame.size.height
-            } else {
-                self.searchView.frame.origin.y = 0
-            }
-        }
-        searchViewIsOpen = !searchViewIsOpen
-    }
-
-    // MARK: - Actions
-    
-    @IBAction func changeTwoPoints(_ sender: Any) {
-        guard let first = firstPointTextField.text,
-            let second = secondPointTextField.text else {return}
-        firstPointTextField.text = second
-        secondPointTextField.text = first
-    }
-    
 }
 
 //MARK: - CLLocationManagerDelegate

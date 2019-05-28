@@ -21,10 +21,12 @@ class StreetGraph {
     var nodes = [String: OSMNode]()
     
     let bounds: OSMBounds
+    var streets = [String]()
     
     init(osm: OSM) {
         self.bounds = osm.bounds
         self.nodes = osm.nodes
+        self.streets = osm.streetNames
         createEdgeList(osm: osm)
         detectAdjacentNodes()
     }

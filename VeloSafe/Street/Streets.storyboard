@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Noq-v2-OKh">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Streets View Controller-->
+        <scene sceneID="kCC-PK-dLr">
+            <objects>
+                <viewController storyboardIdentifier="streetsVC" id="Noq-v2-OKh" customClass="StreetsViewController" customModule="VeloSafe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IDa-lA-c4E">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="c2w-gz-B2Y">
+                                <rect key="frame" x="0.0" y="76" width="375" height="591"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="streetCell" rowHeight="68" id="pBa-k2-PjY" customClass="StreetTableViewCell" customModule="VeloSafe" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="68"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pBa-k2-PjY" id="eCQ-o5-CDu">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="67.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cYn-Gq-eFd">
+                                                    <rect key="frame" x="24" y="23.5" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="cYn-Gq-eFd" secondAttribute="trailing" constant="24" id="9SV-TI-gzf"/>
+                                                <constraint firstItem="cYn-Gq-eFd" firstAttribute="centerY" secondItem="eCQ-o5-CDu" secondAttribute="centerY" id="YmY-UZ-yTV"/>
+                                                <constraint firstItem="cYn-Gq-eFd" firstAttribute="leading" secondItem="eCQ-o5-CDu" secondAttribute="leading" constant="24" id="Yrl-Tg-Kw5"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="streetName" destination="cYn-Gq-eFd" id="9mb-10-bIf"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="RL7-ew-QRt">
+                                <rect key="frame" x="0.0" y="20" width="375" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="BBG-cs-NCG" firstAttribute="trailing" secondItem="c2w-gz-B2Y" secondAttribute="trailing" id="6ED-Gr-Q7U"/>
+                            <constraint firstItem="BBG-cs-NCG" firstAttribute="bottom" secondItem="c2w-gz-B2Y" secondAttribute="bottom" id="F1F-SN-Gq5"/>
+                            <constraint firstItem="c2w-gz-B2Y" firstAttribute="top" secondItem="RL7-ew-QRt" secondAttribute="bottom" id="N1Y-2h-NAq"/>
+                            <constraint firstItem="c2w-gz-B2Y" firstAttribute="leading" secondItem="BBG-cs-NCG" secondAttribute="leading" id="NTV-07-Lh4"/>
+                            <constraint firstItem="RL7-ew-QRt" firstAttribute="leading" secondItem="BBG-cs-NCG" secondAttribute="leading" id="qfZ-O8-4EK"/>
+                            <constraint firstItem="RL7-ew-QRt" firstAttribute="top" secondItem="BBG-cs-NCG" secondAttribute="top" id="sEW-T4-oUT"/>
+                            <constraint firstItem="BBG-cs-NCG" firstAttribute="trailing" secondItem="RL7-ew-QRt" secondAttribute="trailing" id="ztC-nc-rgQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="BBG-cs-NCG"/>
+                    </view>
+                    <connections>
+                        <outlet property="searchBar" destination="RL7-ew-QRt" id="E8Y-vm-BCc"/>
+                        <outlet property="tableView" destination="c2w-gz-B2Y" id="3FA-d3-xV9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bgg-t4-eap" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-322.39999999999998" y="129.98500749625188"/>
+        </scene>
+    </scenes>
+</document>

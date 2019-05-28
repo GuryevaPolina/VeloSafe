@@ -17,6 +17,9 @@
 		522F1120224C847E00A04E12 /* Way.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522F111F224C847E00A04E12 /* Way.swift */; };
 		52E2592D2293215C005A5CE0 /* AStarPathfinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E2592C2293215C005A5CE0 /* AStarPathfinder.swift */; };
 		52E2592F2293AB1E005A5CE0 /* AStarPathStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E2592E2293AB1E005A5CE0 /* AStarPathStep.swift */; };
+		52E25932229CF029005A5CE0 /* Streets.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52E25931229CF029005A5CE0 /* Streets.storyboard */; };
+		52E25934229CF0B6005A5CE0 /* StreetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E25933229CF0B6005A5CE0 /* StreetsViewController.swift */; };
+		52E25936229CF321005A5CE0 /* StreetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E25935229CF321005A5CE0 /* StreetTableViewCell.swift */; };
 		7109B230F8A53D29CC78614A /* Pods_VeloSafe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 451F391203576DECA2605F0C /* Pods_VeloSafe.framework */; };
 		72B7202A22897CAA00D7B445 /* Segment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B7202922897CAA00D7B445 /* Segment.swift */; };
 		9F1D271B217EF24200DA400C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1D271A217EF24200DA400C /* AppDelegate.swift */; };
@@ -39,6 +42,9 @@
 		522F111F224C847E00A04E12 /* Way.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Way.swift; sourceTree = "<group>"; };
 		52E2592C2293215C005A5CE0 /* AStarPathfinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AStarPathfinder.swift; sourceTree = "<group>"; };
 		52E2592E2293AB1E005A5CE0 /* AStarPathStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AStarPathStep.swift; sourceTree = "<group>"; };
+		52E25931229CF029005A5CE0 /* Streets.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Streets.storyboard; sourceTree = "<group>"; };
+		52E25933229CF0B6005A5CE0 /* StreetsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreetsViewController.swift; sourceTree = "<group>"; };
+		52E25935229CF321005A5CE0 /* StreetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreetTableViewCell.swift; sourceTree = "<group>"; };
 		72B7202922897CAA00D7B445 /* Segment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Segment.swift; sourceTree = "<group>"; };
 		7DA581D965643C83417ABF78 /* Pods-VeloSafe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VeloSafe.release.xcconfig"; path = "Pods/Target Support Files/Pods-VeloSafe/Pods-VeloSafe.release.xcconfig"; sourceTree = "<group>"; };
 		9AE001C59707A6BE96AB704A /* Pods-VeloSafe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VeloSafe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VeloSafe/Pods-VeloSafe.debug.xcconfig"; sourceTree = "<group>"; };
@@ -108,6 +114,16 @@
 			path = AStar;
 			sourceTree = "<group>";
 		};
+		52E25930229CF005005A5CE0 /* Street */ = {
+			isa = PBXGroup;
+			children = (
+				52E25931229CF029005A5CE0 /* Streets.storyboard */,
+				52E25933229CF0B6005A5CE0 /* StreetsViewController.swift */,
+				52E25935229CF321005A5CE0 /* StreetTableViewCell.swift */,
+			);
+			path = Street;
+			sourceTree = "<group>";
+		};
 		873B8B4C41C73070A3FDE7CD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +155,7 @@
 			children = (
 				52E259242293208D005A5CE0 /* Modules */,
 				522F1121224DF23700A04E12 /* Map */,
+				52E25930229CF005005A5CE0 /* Street */,
 				520A8B4E223ACB4C00108614 /* Resources */,
 				9F73B4982192B88400174630 /* Model */,
 				9F1D271A217EF24200DA400C /* AppDelegate.swift */,
@@ -228,6 +245,7 @@
 				9F1D2725217EF24D00DA400C /* LaunchScreen.storyboard in Resources */,
 				521C13BF223ACD09007C9879 /* streets.geojson in Resources */,
 				9F1D2722217EF24D00DA400C /* Assets.xcassets in Resources */,
+				52E25932229CF029005A5CE0 /* Streets.storyboard in Resources */,
 				9F1D2720217EF24200DA400C /* Map.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -306,7 +324,9 @@
 			files = (
 				52E2592F2293AB1E005A5CE0 /* AStarPathStep.swift in Sources */,
 				9F73B49A2192B8A000174630 /* GeoPoint.swift in Sources */,
+				52E25936229CF321005A5CE0 /* StreetTableViewCell.swift in Sources */,
 				522F111C224C83CF00A04E12 /* OSMNode.swift in Sources */,
+				52E25934229CF0B6005A5CE0 /* StreetsViewController.swift in Sources */,
 				522F1114224C7F0900A04E12 /* StreetGraph.swift in Sources */,
 				522F1116224C7F9C00A04E12 /* Edge.swift in Sources */,
 				522F111E224C840000A04E12 /* OSMBounds.swift in Sources */,
