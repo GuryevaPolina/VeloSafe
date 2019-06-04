@@ -23,6 +23,8 @@ class StreetGraph {
     let bounds: OSMBounds
     var streets = [String]()
     
+    var turnDirectionTable = [Segment : TurnDirection]()
+    
     init(osm: OSM) {
         self.bounds = osm.bounds
         self.nodes = osm.nodes

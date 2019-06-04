@@ -13,6 +13,11 @@ struct Segment: Hashable {
     var firstPointId: String
     var secondPointId: String
     
+    init(from: OSMNode, to: OSMNode) {
+        firstPointId = from.id
+        secondPointId = to.id
+    }
+    
     var hashValue: Int {
         return (firstPointId + secondPointId).hashValue
     }

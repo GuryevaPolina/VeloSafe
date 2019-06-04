@@ -64,7 +64,16 @@ class AStarPathfinder {
                         continue childLoop
                     }
                 }
-                child.g = currentNode.g + 1
+                if let parent = currentNode.parent?.node {
+                    switch graph.turnDirectionTable[Segment(from: parent, to: child.node)] ?? .left {
+                    case .left:
+                        child.g = currentNode.g + 1
+                    case .right, .none:
+                        child.g = currentNode.g + 1
+                    }
+                }
+                
+                //child.g = currentNode.g + 1
                 child.h = hScore(from: child, to: stepTo)
                 
                 for open in openList {

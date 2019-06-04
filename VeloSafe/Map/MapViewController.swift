@@ -71,9 +71,7 @@ class MapViewController: UIViewController {
         let xml = SWXMLHash.parse(file.data)
         DispatchQueue.main.async {
             if let osm = try? OSM(xml: xml){
-                
                 self.graph = StreetGraph(osm: osm)
-                print(self.graph.bounds)
                 self.isGraphCreated = true
               //  self.drawGraph()
                 self.createAdjacencyMatrix()
@@ -103,18 +101,20 @@ class MapViewController: UIViewController {
                     let eps = 1e-10
                     print(d)
                     if (d < -eps) {
-                        matrix[Segment(firstPointId: node.id, secondPointId: doubleAdjacentNode.id)] = .left
+                        matrix[Segment(from: node, to: doubleAdjacentNode)] = .left
                     } else if (d > eps) {
-                        matrix[Segment(firstPointId: node.id, secondPointId: doubleAdjacentNode.id)] = .right
+                        matrix[Segment(from: node, to: doubleAdjacentNode)] = .right
                     } else {
-                        matrix[Segment(firstPointId: node.id, secondPointId: doubleAdjacentNode.id)] = .none
+                        matrix[Segment(from: node, to: doubleAdjacentNode)] = .none
                         
                     }
                 }
             }
         }
+        graph.turnDirectionTable = matrix
         print("creating matrix done")
-        self.searchPath()
+        self.searchPath(from: graph.nodes["207365354"]!,
+                        to: graph.nodes["4694255902"]!)
     }
     
     
@@ -155,34 +155,27 @@ extension MapViewController {
         print("draw complete")
     }
     
-    //    private func searchPath(from: OSMNode, to: OSMNode) {
-    private func searchPath() {
-        var values = [OSMNode]()
-        for node in graph.nodes.values.prefix(2){
-            values.append(node)
-        }
-        let from = values[0]
-        let to = values[1]
-        drawPoint(from)
-        drawPoint(to)
+    private func searchPath(from: OSMNode, to: OSMNode) {
+//    private func searchPath() {
+//        var values = [OSMNode]()
+//        for node in graph.nodes.values.prefix(2){
+//            values.append(node)
+//        }
+//        let from = values[0]
+//        let to = values[1]
         let pathFinder = AStarPathfinder(graph)
         let path = pathFinder.searchPath(from: from, to: to)
         drawPath(path: path)
     }
     
-    private func drawPoint(_ point: OSMNode) {
-        let path = GMSMutablePath()
+    private func drawPoint(_ point: OSMNode, color: UIColor) {
+        let center = CLLocationCoordinate2D(latitude: point.location.latitude,
+                                            longitude: point.location.longitude)
         
-        path.add(CLLocationCoordinate2D(latitude: point.location.latitude,
-                                        longitude: point.location.longitude))
-        path.add(CLLocationCoordinate2D(latitude: point.location.latitude + 0.001,
-                                        longitude: point.location.longitude + 0.001))
-        
-        let polyline = GMSPolyline(path: path)
-        polyline.strokeColor = .green
-        polyline.strokeWidth = 2.0
-        polyline.geodesic = true
-        polyline.map = mapView
+        let circle = GMSCircle(position: center, radius: 10)
+        circle.fillColor = color
+        circle.strokeColor = color
+        circle.map = mapView
     }
     
     private func drawPath(path pathForDraw: [OSMNode]) {
@@ -192,11 +185,15 @@ extension MapViewController {
             path.add(CLLocationCoordinate2D(latitude: node.location.latitude,
                                             longitude: node.location.longitude))
         }
+        
         let polyline = GMSPolyline(path: path)
         polyline.strokeColor = .blue
         polyline.strokeWidth = 2.0
         polyline.geodesic = true
         polyline.map = mapView
+        
+        drawPoint(pathForDraw.first!, color: .red)
+        drawPoint(pathForDraw.last!, color: .green)
     }
 }
 
