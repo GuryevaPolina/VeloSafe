@@ -69,7 +69,7 @@ class AStarPathfinder {
                     case .left:
                         child.g = currentNode.g + 1
                     case .right, .none:
-                        child.g = currentNode.g + 1
+                        child.g = currentNode.g + 1000
                     }
                 }
                 

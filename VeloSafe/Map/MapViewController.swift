@@ -47,6 +47,16 @@ class MapViewController: UIViewController {
     
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if !(firstPointTextField.text?.isEmpty ?? true) &&
+            !(secondPointTextField.text?.isEmpty ?? true) {
+            
+            self.searchPath(from: graph.nodes["5043641714"]!,
+                            to: graph.nodes["25896553"]!)
+        }
+    }
+    
     //MARK: - Methods
 
     private func initView() {
@@ -99,7 +109,7 @@ class MapViewController: UIViewController {
                     
                     let d = (doubleAdjacentNode.location.latitude - node.location.latitude) * (adjacentNode.location.longitude - node.location.longitude) - (doubleAdjacentNode.location.longitude - node.location.longitude) * (adjacentNode.location.latitude - node.location.latitude)
                     let eps = 1e-10
-                    print(d)
+                  //  print(d)
                     if (d < -eps) {
                         matrix[Segment(from: node, to: doubleAdjacentNode)] = .left
                     } else if (d > eps) {
@@ -113,8 +123,10 @@ class MapViewController: UIViewController {
         }
         graph.turnDirectionTable = matrix
         print("creating matrix done")
-        self.searchPath(from: graph.nodes["207365354"]!,
-                        to: graph.nodes["4694255902"]!)
+//        self.searchPath(from: graph.nodes["207365354"]!,
+//                        to: graph.nodes["4694255902"]!)
+        
+        
     }
     
     
@@ -132,6 +144,14 @@ class MapViewController: UIViewController {
             let second = secondPointTextField.text else {return}
         firstPointTextField.text = second
         secondPointTextField.text = first
+        
+        if first.contains("Политех") {
+            self.searchPath(from: graph.nodes["5043641714"]!,
+                            to: graph.nodes["25896553"]!)
+        } else {
+            self.searchPath(from: graph.nodes["25896553"]!,
+                            to: graph.nodes["5043641714"]!)
+        }
     }
     
 }
@@ -179,6 +199,7 @@ extension MapViewController {
     }
     
     private func drawPath(path pathForDraw: [OSMNode]) {
+        mapView.clear()
         let path = GMSMutablePath()
         
         for node in pathForDraw {

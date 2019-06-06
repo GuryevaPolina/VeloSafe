@@ -32,8 +32,10 @@ class StreetsViewController: UIViewController {
         tableView.tableFooterView = UIView()
         
         searchBar.delegate = self
-        
+        searchBar.enablesReturnKeyAutomatically = false
+
         filteredStreets = streets
+        setTextToSearchBar(editedTextField?.text ?? "")
     }
     
     func setTextToSearchBar(_ text: String) {
@@ -59,8 +61,6 @@ extension StreetsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         setTextToSearchBar(filteredStreets[indexPath.row])
-        editedTextField?.text = filteredStreets[indexPath.row]
-        dismiss(animated: true, completion: nil)
     }
 }
 
@@ -69,8 +69,13 @@ extension StreetsViewController: UISearchBarDelegate {
         if searchText.isEmpty {
             filteredStreets = streets
         } else {
-            filteredStreets = streets.filter( { $0.contains(searchText) } )
+            filteredStreets = streets.filter({ $0.contains(searchText) || searchText.contains($0) })
         }
         tableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        editedTextField?.text = searchBar.text
+        dismiss(animated: false, completion: nil)
     }
 }

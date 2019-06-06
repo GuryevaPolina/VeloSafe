@@ -40,17 +40,23 @@ public class OSM {
             }
             if let streetName = way.tags["name"] {
                 streets.insert(streetName)
+                if streetName.contains("Политехническая") {
+               //     print(way.nodes.first?.id ?? "error")
+                }
+                if streetName.contains("Новолитовская") {
+                    print(way.nodes.randomElement()?.id ?? "error")
+                }
             }
         }
         
         self.nodes = self.nodes.filter({ !$0.value.ways.isEmpty })
         
         DispatchQueue.main.async {
-            print(self.nodes.count)
+         //   print(self.nodes.count)
         }
         
         DispatchQueue.main.async {
-            print(self.ways.count)
+        //    print(self.ways.count)
         }
         
         let xmlBounds = xml["osm"]["bounds"]
