@@ -67,9 +67,9 @@ class AStarPathfinder {
                 if let parent = currentNode.parent?.node {
                     switch graph.turnDirectionTable[Segment(from: parent, to: child.node)] ?? .left {
                     case .left:
-                        child.g = currentNode.g + 1
+                        child.g = currentNode.g + 10000
                     case .right, .none:
-                        child.g = currentNode.g + 1000
+                        child.g = currentNode.g + 1
                     }
                 }
                 

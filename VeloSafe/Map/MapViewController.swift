@@ -125,6 +125,8 @@ class MapViewController: UIViewController {
         print("creating matrix done")
 //        self.searchPath(from: graph.nodes["207365354"]!,
 //                        to: graph.nodes["4694255902"]!)
+        self.searchPath(from: graph.nodes["5043641714"]!,
+                        to: graph.nodes["25896553"]!)
         
         
     }

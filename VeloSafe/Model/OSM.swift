@@ -32,32 +32,39 @@ public class OSM {
             let way = try OSMWay(xml: xmlWay, osm: self)
             
             let allowedHighwayValues = ["living_street", "cycleway", "motorway", "trunk", "primary", "secondary", "tertiary", "motorway_link", "trunk_link", "primary_link", "secondary_link", "tertiary_link", "unclassified", "road", "residential"]
+            let oneWayMarkers = ["yes"]
+            
             if let highwayValue = way.tags["highway"], allowedHighwayValues.contains(highwayValue) {
                 for node in way.nodes {
                     self.nodes[node.id]?.ways.insert(way)
                 }
+                if let oneWay = way.tags["oneway"], oneWayMarkers.contains(oneWay) {
+                    way.isOneWay = true
+                }
                 self.ways.insert(way)
             }
+            
+            
             if let streetName = way.tags["name"] {
                 streets.insert(streetName)
-                if streetName.contains("Политехническая") {
-               //     print(way.nodes.first?.id ?? "error")
-                }
-                if streetName.contains("Новолитовская") {
-                    print(way.nodes.randomElement()?.id ?? "error")
-                }
+//                if streetName.contains("Политехническая") {
+//                    print(way.nodes.first?.id ?? "error")
+//                }
+//                if streetName.contains("Новолитовская") {
+//                    print(way.nodes.randomElement()?.id ?? "error")
+//                }
             }
         }
         
         self.nodes = self.nodes.filter({ !$0.value.ways.isEmpty })
         
-        DispatchQueue.main.async {
-         //   print(self.nodes.count)
-        }
-        
-        DispatchQueue.main.async {
-        //    print(self.ways.count)
-        }
+//        DispatchQueue.main.async {
+//            print(self.nodes.count)
+//        }
+//
+//        DispatchQueue.main.async {
+//            print(self.ways.count)
+//        }
         
         let xmlBounds = xml["osm"]["bounds"]
         self.bounds = try OSMBounds(xml: xmlBounds)

@@ -36,7 +36,9 @@ class StreetGraph {
     private func detectAdjacentNodes() {
         for edge in edgeList {
             edge.from.adjacent.insert(edge.to)
-            edge.to.adjacent.insert(edge.from)
+            if !edge.isOneWay {
+                edge.to.adjacent.insert(edge.from)
+            }
         }
     }
     
@@ -44,7 +46,8 @@ class StreetGraph {
         for way in osm.ways {
             for i in 0..<way.nodes.count - 1 {
                 let edge = Edge(from: way.nodes[i],
-                                to: way.nodes[i + 1])
+                                to: way.nodes[i + 1],
+                                isOneWay: way.isOneWay)
                 self.edgeList.append(edge)
             }
         }

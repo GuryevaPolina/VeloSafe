@@ -11,4 +11,5 @@ import Foundation
 struct Edge {
     var from: OSMNode
     var to: OSMNode
+    var isOneWay: Bool = false
 }
