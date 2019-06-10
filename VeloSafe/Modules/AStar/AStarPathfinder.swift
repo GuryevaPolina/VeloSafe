@@ -90,6 +90,6 @@ class AStarPathfinder {
     }
     
     private func hScore(from: AStarPathStep, to: AStarPathStep) -> Double {
-        return from.node.location.distance(to: to.node.location)
+        return from.node.distance(to: to.node)
     }
 }

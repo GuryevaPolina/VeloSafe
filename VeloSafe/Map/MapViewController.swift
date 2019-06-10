@@ -188,6 +188,15 @@ extension MapViewController {
         let pathFinder = AStarPathfinder(graph)
         let path = pathFinder.searchPath(from: from, to: to)
         drawPath(path: path)
+        print(pathDistance(path))
+    }
+    
+    private func pathDistance(_ path: [OSMNode]) -> Double {
+        var distance = 0.0
+        for i in 0..<(path.count - 1) {
+            distance += path[i].distance(to: path[i + 1])
+        }
+        return distance
     }
     
     private func drawPoint(_ point: OSMNode, color: UIColor) {
