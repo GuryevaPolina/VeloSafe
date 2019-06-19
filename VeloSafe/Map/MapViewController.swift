@@ -52,8 +52,8 @@ class MapViewController: UIViewController {
         if !(firstPointTextField.text?.isEmpty ?? true) &&
             !(secondPointTextField.text?.isEmpty ?? true) {
             
-            self.searchPath(from: graph.nodes["5043641714"]!,
-                            to: graph.nodes["25896553"]!)
+//            self.searchPath(from: graph.nodes["5043641714"]!,
+//                            to: graph.nodes["25896553"]!)
         }
     }
     
@@ -108,7 +108,7 @@ class MapViewController: UIViewController {
                 for doubleAdjacentNode in adjacentNode.adjacent {
                     
                     let d = (doubleAdjacentNode.location.latitude - node.location.latitude) * (adjacentNode.location.longitude - node.location.longitude) - (doubleAdjacentNode.location.longitude - node.location.longitude) * (adjacentNode.location.latitude - node.location.latitude)
-                    let eps = 1e-10
+                    let eps = 1e-7
                   //  print(d)
                     if (d < -eps) {
                         matrix[Segment(from: node, to: doubleAdjacentNode)] = .left
@@ -125,10 +125,10 @@ class MapViewController: UIViewController {
         print("creating matrix done")
 //        self.searchPath(from: graph.nodes["207365354"]!,
 //                        to: graph.nodes["4694255902"]!)
-        self.searchPath(from: graph.nodes["5043641714"]!,
-                        to: graph.nodes["25896553"]!)
+//        self.searchPath(from: graph.nodes["5043641714"]!,
+//                        to: graph.nodes["25896553"]!)
         
-        
+        searchPath()
     }
     
     
@@ -147,13 +147,13 @@ class MapViewController: UIViewController {
         firstPointTextField.text = second
         secondPointTextField.text = first
         
-        if first.contains("Политех") {
-            self.searchPath(from: graph.nodes["5043641714"]!,
-                            to: graph.nodes["25896553"]!)
-        } else {
-            self.searchPath(from: graph.nodes["25896553"]!,
-                            to: graph.nodes["5043641714"]!)
-        }
+//        if first.contains("Политех") {
+//            self.searchPath(from: graph.nodes["5043641714"]!,
+//                            to: graph.nodes["25896553"]!)
+//        } else {
+//            self.searchPath(from: graph.nodes["25896553"]!,
+//                            to: graph.nodes["5043641714"]!)
+//        }
     }
     
 }
@@ -177,26 +177,70 @@ extension MapViewController {
         print("draw complete")
     }
     
-    private func searchPath(from: OSMNode, to: OSMNode) {
-//    private func searchPath() {
-//        var values = [OSMNode]()
-//        for node in graph.nodes.values.prefix(2){
-//            values.append(node)
+ //   private func searchPath(from: OSMNode, to: OSMNode) {
+    private func searchPath() {
+    //    var count = 0
+    //    let start = DispatchTime.now()
+        var values = [OSMNode]()
+        for node in graph.nodes.values {
+            values.append(node)
+        }
+        
+        let N = 1000
+        for _ in 0..<N {
+            let from = values[Int.random(in: 0..<values.count)]
+            let to = values[Int.random(in: 0..<values.count)]
+            let pathFinder = AStarPathfinder(graph)
+            let (path, n) = pathFinder.searchPath(from: from, to: to)
+         //  drawPath(path: path)
+            
+            print("\(pathDistance(path)) - \(turnsCount(path))")
+         //   count += n
+        }
+        
+//        for value in values {
+//            if value.adjacent.count > 2 {
+//                drawPoint(value, color: .red)
+//            }
 //        }
-//        let from = values[0]
-//        let to = values[1]
-        let pathFinder = AStarPathfinder(graph)
-        let path = pathFinder.searchPath(from: from, to: to)
-        drawPath(path: path)
-        print(pathDistance(path))
+    
+      //  let end = DispatchTime.now()
+        // print("TIME: \((end.uptimeNanoseconds - start.uptimeNanoseconds) / 1_000_000_000)")
+        //  print("COUNT: \(count / N) / \(graph.nodes.count)")
+//        drawPath(path: path)
+//        print(pathDistance(path))
     }
     
-    private func pathDistance(_ path: [OSMNode]) -> Double {
+    private func turnsCount(_ path: [OSMNode]) -> Int {
+        var k = 0
+        for (i, node) in path.enumerated() {
+            if node.adjacent.count > 2 {
+                var p = 0.0
+                if i != 0 && i != path.count - 1 {
+                    let a = (path[i + 1].location.latitude - path[i - 1].location.latitude)
+                    let b = (node.location.longitude - path[i - 1].location.longitude)
+                    let c = (path[i+1].location.longitude - path[i - 1].location.longitude)
+                    let d = (node.location.latitude - path[i - 1].location.latitude)
+                    p = a * b - c * d
+                }
+
+                if p < 0 {
+                    k += 1
+                }
+            }
+        }
+        return k
+    }
+    
+    private func pathDistance(_ path: [OSMNode]) -> Int {
         var distance = 0.0
+        if path.count == 0 {
+            return 0
+        }
         for i in 0..<(path.count - 1) {
             distance += path[i].distance(to: path[i + 1])
         }
-        return distance
+        return Int(distance)
     }
     
     private func drawPoint(_ point: OSMNode, color: UIColor) {
@@ -210,7 +254,7 @@ extension MapViewController {
     }
     
     private func drawPath(path pathForDraw: [OSMNode]) {
-        mapView.clear()
+        //mapView.clear()
         let path = GMSMutablePath()
         
         for node in pathForDraw {
@@ -218,8 +262,10 @@ extension MapViewController {
                                             longitude: node.location.longitude))
         }
         
+        let colors = [UIColor.cyan, UIColor.blue, UIColor.yellow, UIColor.black, UIColor.brown]
+        
         let polyline = GMSPolyline(path: path)
-        polyline.strokeColor = .blue
+        polyline.strokeColor = colors[Int.random(in: 0..<colors.count)]
         polyline.strokeWidth = 2.0
         polyline.geodesic = true
         polyline.map = mapView

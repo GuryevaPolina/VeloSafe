@@ -11,21 +11,25 @@ import Foundation
 class AStarPathfinder {
     
     private var graph: StreetGraph
+    private var from: AStarPathStep!
+    private var to: AStarPathStep!
     
     init(_ graph: StreetGraph) {
         self.graph = graph
     }
     
-    func searchPath(from: OSMNode, to: OSMNode) -> [OSMNode] {
+    func searchPath(from firstNode: OSMNode, to secondNode: OSMNode) -> ([OSMNode], Int) {
         var path = [OSMNode]()
         
-        let stepFrom = AStarPathStep(node: from)
-        let stepTo = AStarPathStep(node: to)
+        from = AStarPathStep(node: firstNode)
+        to = AStarPathStep(node: secondNode)
         
         var openList = [AStarPathStep]()
         var closeList = [AStarPathStep]()
         
-        openList.append(stepFrom)
+        var n = 0
+        
+        openList.append(from)
         
         while !openList.isEmpty {
             var currentIndex = 0
@@ -41,14 +45,14 @@ class AStarPathfinder {
             openList.remove(at: currentIndex)
             closeList.append(currentNode)
             
-            if currentNode == stepTo {
+            if currentNode == to {
                 path = []
                 var current: AStarPathStep? = currentNode
                 while current != nil {
                     path.append(current!.node)
                     current = current?.parent
                 }
-                return path.reversed()
+                return (path.reversed(), n)
             }
             
             var children = [AStarPathStep]()
@@ -67,14 +71,14 @@ class AStarPathfinder {
                 if let parent = currentNode.parent?.node {
                     switch graph.turnDirectionTable[Segment(from: parent, to: child.node)] ?? .left {
                     case .left:
-                        child.g = currentNode.g + 10000
+                        n += 1
+                        child.g = currentNode.g + 1
                     case .right, .none:
                         child.g = currentNode.g + 1
                     }
                 }
                 
-                //child.g = currentNode.g + 1
-                child.h = hScore(from: child, to: stepTo)
+                child.h = hScore(child, to)
                 
                 for open in openList {
                     if child == open && child.g > open.g {
@@ -86,10 +90,19 @@ class AStarPathfinder {
             
         }
         
-        return path
+        return (path, 0)
     }
     
-    private func hScore(from: AStarPathStep, to: AStarPathStep) -> Double {
-        return from.node.distance(to: to.node)
+    private func hScore(_ firstNode: AStarPathStep, _ secondNode: AStarPathStep) -> Double {
+        
+        let d = (secondNode.node.location.latitude - from.node.location.latitude) * (firstNode.node.location.longitude - from.node.location.longitude) - (secondNode.node.location.longitude - from.node.location.longitude) * (firstNode.node.location.latitude - from.node.location.latitude)
+        
+        if d >= 0 {
+            return from.node.distance(to: to.node)
+        } else {
+            return from.node.distance(to: to.node)
+        }
+        
+        
     }
 }
